@@ -4,18 +4,16 @@ class Bank:
     def __init__(self, initialAmount):
         Bank.bankTotalMoney += initialAmount
 
-    @classmethod
-    def deposit_bank(cls, amt):
-        cls.bankTotalMoney += amt
-        print(f"Bank total after deposit: {cls.bankTotalMoney}")
+    def deposit_bank(self, amt):
+        Bank.bankTotalMoney += amt
+        print(f"Bank total after deposit: {Bank.bankTotalMoney}")
 
-    @classmethod
-    def withdraw_bank(cls, amt):
-        if amt > cls.bankTotalMoney:
+    def withdraw_bank(self, amt):
+        if amt > Bank.bankTotalMoney:
             print("Insufficient funds in the bank!")
             return False
-        cls.bankTotalMoney -= amt
-        print(f"Bank total after withdrawal: {cls.bankTotalMoney}")
+        Bank.bankTotalMoney -= amt
+        print(f"Bank total after withdrawal: {Bank.bankTotalMoney}")
         return True
 
 
@@ -38,14 +36,12 @@ class Account(Bank):
             print(f"User balance after withdrawal: {self.userBankBalance}")
 
 
-
 if __name__ == '__main__':
-    
     totalBankAmount = 500
 
-   
+    
     user1 = Account(200, totalBankAmount)
-    user1.deposit_user(100) 
+    user1.deposit_user(100)  
     user1.withdraw_user(50)  
 
     print('User 1 balance:', user1.userBankBalance)
